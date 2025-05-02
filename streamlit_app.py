@@ -1,10 +1,9 @@
 import streamlit as st
 import torch
-import torch.nn.functional as F # Fixed typo: Ffunctional -> F
+import torch.nn.functional as F 
 import torch.nn as nn
 import torch.optim as optim
 from torch import Tensor
-# Fixed: Use Normal for univariate action space
 from torch.distributions import Normal # MultivariateNormal
 import copy
 import numpy as np
@@ -268,7 +267,6 @@ def plot_training(t, Ca_train_list, T_train_list, Tc_train_list, Ca_des, T_des, 
         axs[0].plot(t, Ca_train_list[run_i], 'r-', lw=1, alpha=max(0.1, c_[run_i]*0.7)) # Ensure alpha > 0
     axs[0].step(t, Ca_des, '--', lw=1.5, color='black', label='Setpoint Ca')
     axs[0].set_ylabel('Ca (mol/m^3)')
-    # axs[0].set_ylim([min(Ca_des)*0.95, max(Ca_des)*1.05]) # Dynamic Ylim
     axs[0].legend(loc='best')
     axs[0].grid(True)
 
@@ -859,10 +857,6 @@ with st.sidebar:
 
     run_button = st.button("Run Simulation & Training")
 
-# ==============================================================================
-# (Rest of the Streamlit App Code remains the same)
-# ...
-# ==============================================================================
 
 if 'sps_policy_dict' not in st.session_state:
     st.session_state.sps_policy_dict = None
